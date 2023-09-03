@@ -6,9 +6,6 @@ metadata:
     {{- include "kamaji.labels" $data | nindent 4 }}
   name: {{ include "kamaji.certificateName" . }}
   namespace: {{ .Release.Namespace }}
-  annotations:
-    "helm.sh/hook": pre-install
-    "helm.sh/hook-weight": "-5"
 spec:
   dnsNames:
     - {{ include "kamaji.webhookServiceName" . }}.{{ .Release.Namespace }}.svc
