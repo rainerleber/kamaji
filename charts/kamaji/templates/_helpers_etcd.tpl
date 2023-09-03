@@ -134,9 +134,13 @@ Key-value of the etcd peers, using the overrides in case of unmanaged etcd.
 Retrieve the current Kubernetes version to launch a kubectl container with the minimum version skew possible.
 */}}
 {{- define "etcd.jobsTagKubeVersion" -}}
-{{- if contains "-eks-" .Capabilities.KubeVersion.GitVersion }}
-{{- print "v" .Capabilities.KubeVersion.Major "." (.Capabilities.KubeVersion.Minor | replace "+" "") -}}
+{{- if .Values.etcd.overrides.kubectl.version -}}
+{{- print "v" .Values.etcd.overrides.kubectl.version -}}
 {{- else }}
-{{- print "v" .Capabilities.KubeVersion.Major "." .Capabilities.KubeVersion.Minor -}}
+    {{- if contains "-eks-" .Capabilities.KubeVersion.GitVersion }}
+    {{- print "v" .Capabilities.KubeVersion.Major "." (.Capabilities.KubeVersion.Minor | replace "+" "") -}}
+    {{- else }}
+    {{- print "v" .Capabilities.KubeVersion.Major "." .Capabilities.KubeVersion.Minor -}}
+    {{- end }}
 {{- end }}
 {{- end }}
