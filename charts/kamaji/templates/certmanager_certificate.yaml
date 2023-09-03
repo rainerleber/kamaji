@@ -6,8 +6,6 @@ metadata:
     {{- include "kamaji.labels" $data | nindent 4 }}
   name: {{ include "kamaji.certificateName" . }}
   namespace: {{ .Release.Namespace }}
-  annotations:
-    argocd.argoproj.io/hook: PreSync
 spec:
   dnsNames:
     - {{ include "kamaji.webhookServiceName" . }}.{{ .Release.Namespace }}.svc

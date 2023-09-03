@@ -6,7 +6,5 @@ metadata:
     {{- include "kamaji.labels" $data | nindent 4 }}
   name: kamaji-selfsigned-issuer
   namespace: {{ .Release.Namespace }}
-  annotations:
-    argocd.argoproj.io/hook: PreSync
 spec:
   selfSigned: {}
