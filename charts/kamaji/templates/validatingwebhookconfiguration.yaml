@@ -44,6 +44,7 @@ webhooks:
         operations:
           - CREATE
           - UPDATE
+          - DELETE
         resources:
           - datastores
     sideEffects: None
