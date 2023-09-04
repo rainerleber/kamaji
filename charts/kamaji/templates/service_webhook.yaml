@@ -8,7 +8,7 @@ metadata:
   namespace: {{ .Release.Namespace }}
 spec:
   ports:
-    - port: 8443
+    - port: 443
       protocol: TCP
       name: webhook-server
       targetPort: webhook-server
