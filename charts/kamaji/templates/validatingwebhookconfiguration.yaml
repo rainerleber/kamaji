@@ -27,27 +27,27 @@ webhooks:
         resources:
           - secrets
     sideEffects: None
-  - admissionReviewVersions:
-      - v1
-    clientConfig:
-      service:
-        name: {{ include "kamaji.webhookServiceName" . }}
-        namespace: {{ .Release.Namespace }}
-        path: /validate-kamaji-clastix-io-v1alpha1-datastore
-    failurePolicy: Fail
-    name: vdatastore.kb.io
-    rules:
-      - apiGroups:
-          - kamaji.clastix.io
-        apiVersions:
-          - v1alpha1
-        operations:
-          - CREATE
-          - UPDATE
-          - DELETE
-        resources:
-          - datastores
-    sideEffects: None
+  # - admissionReviewVersions:
+  #     - v1
+  #   clientConfig:
+  #     service:
+  #       name: {{ include "kamaji.webhookServiceName" . }}
+  #       namespace: {{ .Release.Namespace }}
+  #       path: /validate-kamaji-clastix-io-v1alpha1-datastore
+  #   failurePolicy: Fail
+  #   name: vdatastore.kb.io
+  #   rules:
+  #     - apiGroups:
+  #         - kamaji.clastix.io
+  #       apiVersions:
+  #         - v1alpha1
+  #       operations:
+  #         - CREATE
+  #         - UPDATE
+  #         - DELETE
+  #       resources:
+  #         - datastores
+  #   sideEffects: None
   - admissionReviewVersions:
       - v1
     clientConfig:
